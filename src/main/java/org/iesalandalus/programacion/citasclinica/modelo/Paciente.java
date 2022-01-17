@@ -73,4 +73,38 @@ public class Paciente {
 		setDni(paciente.getDni());
 		setTelefono(paciente.getTelefono());
 	}
+
+	private String formateaNombre(String nombre) {
+		String nombreFormat, nombreResultado;
+		nombreResultado = "";
+		String palabraMayus, palabraFormateada = null;
+		char primerCaracter;
+		int inicioPalabra = 0, finPalabra;
+		int posicionUltimoEspacio = 0;
+
+		nombreFormat = nombre.toLowerCase().trim();
+		String[] palabras = nombreFormat.split("//s+");
+
+		do {
+			inicioPalabra = posicionUltimoEspacio;
+			finPalabra = palabras[0].indexOf(" ", inicioPalabra);
+			posicionUltimoEspacio = finPalabra + 1;
+
+			while (palabras[0].substring(posicionUltimoEspacio, posicionUltimoEspacio + 1).trim().isEmpty()) {
+				posicionUltimoEspacio++;
+			}
+			if (finPalabra == -1) {
+				finPalabra = palabras[0].length();
+			}
+
+			palabraMayus = palabras[0].substring(inicioPalabra, finPalabra).toUpperCase();
+			primerCaracter = palabraMayus.charAt(0);
+			palabraFormateada = primerCaracter + palabras[0].substring(inicioPalabra + 1, finPalabra);
+			nombreResultado = nombreResultado + palabraFormateada;
+			if (finPalabra != palabras[0].length()) {
+				nombreResultado += " ";
+			}
+		} while (finPalabra != palabras[0].length());
+		return nombreResultado;
+	}
 }
