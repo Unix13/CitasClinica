@@ -145,4 +145,17 @@ public class Paciente {
 		}
 		return dniCorrecto;
 	}
+	
+	private String getIniciales(){
+		String iniciales="";
+		
+		String [] palabras=nombre.split("\\s+");
+		
+		for(int i=0;i<palabras.length;i++)
+		{
+			iniciales=iniciales+palabras[i].charAt(0);
+		}
+		
+		return iniciales;
+	}
 }
