@@ -107,4 +107,42 @@ public class Paciente {
 		} while (finPalabra != palabras[0].length());
 		return nombreResultado;
 	}
+
+	private boolean comprobarLetraDni(String dni) {
+		if (dni == null || dni.trim().isEmpty())
+			throw new NullPointerException("ERROR: El DNI de un paciente no puede ser nulo o vacío.");
+
+		char[] LETRAS_DNI = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
+				'H', 'L', 'C', 'K', 'E' };
+		Pattern patron = null;
+		Matcher comparador;
+		patron = Pattern.compile(ER_DNI);
+		comparador = patron.matcher(dni);
+		boolean dniCorrecto = false;
+		char letra;
+		int numerosDni;
+
+		if (!comparador.matches()) {
+			return false;
+		}
+
+		try {
+			numerosDni = Integer.parseInt(comparador.group(1));
+			
+		} catch (NumberFormatException e)
+		
+		{
+			numerosDni = 0;
+		}
+
+		letra = LETRAS_DNI[numerosDni % 23];
+
+		if (comparador.group(2).charAt(0) == letra) {
+			
+			dniCorrecto = true;
+		} else {
+			throw new IllegalArgumentException("ERROR: La letra del DNI no es correcta.");
+		}
+		return dniCorrecto;
+	}
 }
