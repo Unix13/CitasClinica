@@ -31,5 +31,17 @@ public class Cita {
 		}
 		this.paciente = new Paciente(paciente);
 	}
-
+	public Cita(Paciente paciente,LocalDateTime fechaHora) {
+		setPaciente(paciente);
+		setFechaHora(fechaHora);
+	}
+	
+	public Cita(Cita cita) {
+		if (cita==null) {
+			throw new NullPointerException("ERROR: No se puede copiar una cita nula.");
+		}
+		setPaciente(new Paciente(cita.getPaciente()));
+		setFechaHora(cita.getFechaHora());
+	}
+	
 }
