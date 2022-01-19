@@ -112,4 +112,11 @@ public class Consola {
 
 		return fecha;
 	}
+
+	public static Cita leerCita() throws OperationNotSupportedException {
+		Paciente paciente = Consola.leerPaciente();
+		LocalDateTime fechaHora = Consola.leerFechaHora();
+		return new Cita(paciente, fechaHora);
+	}
+
 }
