@@ -62,4 +62,20 @@ public class MainApp {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	private static void mostrarCitas() {
+		int i;
+		boolean coincidencias = false;
+
+		Cita[] citasAMostrar = citasClinica.getCitas();
+
+		for (i = 0; i < citasClinica.getTamano(); i++) {
+			System.out.println(citasAMostrar[i].toString());
+			coincidencias = true;
+		}
+		if (coincidencias == false) {
+			System.out.println("No hay citas almacenadas");
+		}
+
+	}
 }
