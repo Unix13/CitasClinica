@@ -55,5 +55,17 @@ public class Citas {
 		}
 		return superado;
 	}
+	private int buscarIndice(Cita cita) {
+		int indice=tamano+1; //se inicializa a tamano+1 para el caso en que no se encuentre indice.
+		int i;
+		for (i=0; i<tamano;i++) {
+			if (coleccionCitas[i].equals(cita)){ 
+				//solo se comparan las fechas obviando los nombres.
+				//se utiliza el método equals para el array ya que es un array de objetos
+				indice=i;
+			}
+		}
+		return indice ;
+	}
 
 }
