@@ -110,4 +110,19 @@ public class Citas {
 		coleccionCitas[i] = null;
 	}
 
+	public void borrar(Cita cita) throws OperationNotSupportedException {
+		if (cita == null) {
+			throw new IllegalArgumentException("ERROR: No se puede borrar una cita nula.");
+		}
+		int indice;
+		indice = buscarIndice(cita);
+		if (indice != tamano + 1) {
+
+			desplazarUnaPosicionHaciaIzquierda(indice);
+			System.out.println("Cita borrada correctamente.");
+			tamano--;
+		} else {
+			throw new OperationNotSupportedException("ERROR: No existe ninguna cita para esa fecha y hora.");
+		}
+	}
 }
