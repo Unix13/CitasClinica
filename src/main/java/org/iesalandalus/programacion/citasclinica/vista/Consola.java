@@ -67,34 +67,49 @@ public class Consola {
 		}
 		return opcion;
 	}
+
 	public static Paciente leerPaciente() {
-		String nombre,dni,telefono;
+		String nombre, dni, telefono;
 		Paciente paciente = null;
 		boolean error;
 		do {
-			error=false;
+			error = false;
 			System.out.println("Introduzca el nombre junto los apellidos del paciente");
 			System.out.print("Nombre:");
-			nombre=Entrada.cadena();
+			nombre = Entrada.cadena();
 			System.out.println("Introduzca el dni del paciente");
 			System.out.print("DNI:");
-			dni=Entrada.cadena();
+			dni = Entrada.cadena();
 			System.out.println("Introduzca el telefono del paciente");
 			System.out.print("Teléfono:");
-			telefono=Entrada.cadena();
-			try
-			{
-				paciente=new Paciente(nombre,dni,telefono);
-			}
-			catch(NullPointerException | IllegalArgumentException e)
-			{
+			telefono = Entrada.cadena();
+			try {
+				paciente = new Paciente(nombre, dni, telefono);
+			} catch (NullPointerException | IllegalArgumentException e) {
 				System.out.println(e.getMessage());
-				error=true;
+				error = true;
 			}
-		}while(error);
-		
+		} while (error);
+
 		return paciente;
 	}
-	
 
+	public static LocalDateTime leerFechaHora() {
+		LocalDateTime fecha = null;
+		String fechaIntroducida;
+		do {
+			System.out.print("Introduce la fecha con formato(dd/MM/yyyy HH:mm)");
+			System.out.print("Fecha: ");
+			fechaIntroducida = Entrada.cadena();
+
+			try {
+				DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern(Cita.FORMATO_FECHA_HORA);
+				fecha = LocalDateTime.parse(fechaIntroducida, formatoFechaHora);
+			} catch (DateTimeParseException e) {
+				fecha = null;
+			}
+		} while (fecha == null);
+
+		return fecha;
+	}
 }
