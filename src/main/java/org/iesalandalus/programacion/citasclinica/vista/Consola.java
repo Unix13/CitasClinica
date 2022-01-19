@@ -67,6 +67,34 @@ public class Consola {
 		}
 		return opcion;
 	}
+	public static Paciente leerPaciente() {
+		String nombre,dni,telefono;
+		Paciente paciente = null;
+		boolean error;
+		do {
+			error=false;
+			System.out.println("Introduzca el nombre junto los apellidos del paciente");
+			System.out.print("Nombre:");
+			nombre=Entrada.cadena();
+			System.out.println("Introduzca el dni del paciente");
+			System.out.print("DNI:");
+			dni=Entrada.cadena();
+			System.out.println("Introduzca el telefono del paciente");
+			System.out.print("Teléfono:");
+			telefono=Entrada.cadena();
+			try
+			{
+				paciente=new Paciente(nombre,dni,telefono);
+			}
+			catch(NullPointerException | IllegalArgumentException e)
+			{
+				System.out.println(e.getMessage());
+				error=true;
+			}
+		}while(error);
+		
+		return paciente;
+	}
 	
 
 }
