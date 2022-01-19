@@ -56,12 +56,11 @@ public class Citas {
 		return superado;
 	}
 	private int buscarIndice(Cita cita) {
-		int indice=tamano+1; //se inicializa a tamano+1 para el caso en que no se encuentre indice.
+		int indice=tamano+1; 
 		int i;
 		for (i=0; i<tamano;i++) {
 			if (coleccionCitas[i].equals(cita)){ 
-				//solo se comparan las fechas obviando los nombres.
-				//se utiliza el método equals para el array ya que es un array de objetos
+				
 				indice=i;
 			}
 		}
@@ -71,8 +70,8 @@ public class Citas {
 		if (cita==null) {
 			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
 		}
-		//Buscamos si ya existe la cita.
-		if(buscar(cita)!=null) {//es decir sí ha encontrado una cita ya existente. Recuerda que tamano+1 indica que no se ha encontrado
+		
+		if(buscar(cita)!=null) {
 			throw new OperationNotSupportedException("ERROR: Ya existe una cita para esa fecha y hora.");
 		}
 		
@@ -80,9 +79,23 @@ public class Citas {
 		if (capacidadSuperada(tamano)==true) {
 			throw new OperationNotSupportedException("ERROR: No se aceptan más citas.");
 		}else {
-			coleccionCitas[tamano]=new Cita(cita); //añade una cita justo despues de la última almacenada
+			coleccionCitas[tamano]=new Cita(cita); 
 			System.out.println("Cita introducida correctamente.");
 			tamano++;
 		}		
 	}
+	public Cita buscar(Cita cita) throws OperationNotSupportedException  {
+		if(cita==null) {
+			throw new NullPointerException("ERROR: No se puede buscar una cita nula.");
+		}
+		int indice;
+		Cita citaEncontrada = null; //si no encuentra cita este método devuelve null.
+		indice=buscarIndice(cita);
+		if (indice!=tamano+1) {
+			citaEncontrada=new Cita(coleccionCitas[indice]);//obtengo una copia de la cita
+		}
+
+		return citaEncontrada; //devuelvo una copia de la cita encontrada
+	}
+	
 }
