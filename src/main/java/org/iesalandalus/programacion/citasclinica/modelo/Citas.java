@@ -39,6 +39,21 @@ public class Citas {
 		}
 		return coleccionCitasFecha;
 	}
+	private boolean tamanoSuperado (int nuevoTamano) {
+		boolean superado=false;
+		if (nuevoTamano>=tamano) {
+			superado=true;
+		}
+		return superado;
+	}
 	
+	
+	private boolean capacidadSuperada(int nuevoTamano) {
+		boolean superado=false;
+		if (nuevoTamano>=capacidad) {
+			superado=true;
+		}
+		return superado;
+	}
 
 }
