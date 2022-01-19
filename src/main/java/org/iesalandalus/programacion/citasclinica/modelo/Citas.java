@@ -67,5 +67,22 @@ public class Citas {
 		}
 		return indice ;
 	}
-
+	public void insertar(Cita cita) throws OperationNotSupportedException{
+		if (cita==null) {
+			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
+		}
+		//Buscamos si ya existe la cita.
+		if(buscar(cita)!=null) {//es decir sí ha encontrado una cita ya existente. Recuerda que tamano+1 indica que no se ha encontrado
+			throw new OperationNotSupportedException("ERROR: Ya existe una cita para esa fecha y hora.");
+		}
+		
+		
+		if (capacidadSuperada(tamano)==true) {
+			throw new OperationNotSupportedException("ERROR: No se aceptan más citas.");
+		}else {
+			coleccionCitas[tamano]=new Cita(cita); //añade una cita justo despues de la última almacenada
+			System.out.println("Cita introducida correctamente.");
+			tamano++;
+		}		
+	}
 }
