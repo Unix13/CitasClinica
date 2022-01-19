@@ -78,4 +78,31 @@ public class MainApp {
 		}
 
 	}
+
+	private static void mostrarCitasDia() {
+		Cita[] citasEncontradas;
+		LocalDate fecha;
+		boolean coincidencias = false;
+		fecha = Consola.leerFecha();
+		citasEncontradas = new Cita[citasClinica.getTamano()];
+		try {
+			citasEncontradas = citasClinica.getCitas(fecha);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		int i;
+		for (i = 0; i < citasEncontradas.length; i++) {
+			if (citasEncontradas[i] != null) { // solo mostramos las coincidencias no nulas.
+				System.out.println(citasEncontradas[i].toString());
+				coincidencias = true;
+			}
+		}
+		if (coincidencias == false) {
+			System.out.println("No hay citas en el día indicado");
+		}
+
+	}
+
 }
