@@ -118,5 +118,25 @@ public class Consola {
 		LocalDateTime fechaHora = Consola.leerFechaHora();
 		return new Cita(paciente, fechaHora);
 	}
-
+	public static LocalDate leerFecha() {
+		LocalDate fecha = null;
+		String fechaIntroducida;
+		do 
+		{
+			System.out.print("Introduce la fecha (dd/MM/yyyy)");
+			System.out.print("fecha: ");
+			fechaIntroducida=Entrada.cadena();
+			
+			try 
+			{
+				fecha = LocalDate.parse(fechaIntroducida, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			} 
+			catch (DateTimeParseException e) 
+			{
+				fecha = null;
+			}
+		} while (fecha == null);
+		
+		return fecha;
+	}
 }
