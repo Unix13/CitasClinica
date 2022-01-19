@@ -15,6 +15,39 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 public class MainApp {
 	private static final int NUM_MAX_CITAS = 30;
 	private static Citas citasClinica;
+	
+	public static void main(String[] args) {
+		Opciones opcion;
+		citasClinica=new Citas(NUM_MAX_CITAS);
+		do {
+			System.out.println("Programa para gestionar las citas de la Clínica.");
+			Consola.mostrarMenu();
+			opcion=Consola.elegirOpcion();
+			ejecutarOpcion(opcion);
+		}while(opcion!=Opciones.SALIR);
+	}
+
+	private static void ejecutarOpcion(Opciones opcionMenu) {
+		switch (opcionMenu){
+		case SALIR://no hace nada por tanto acabará la ejecución del programa ya que la condicion del bucle do-while del método main se cumplirá
+			break;
+		case INSERTAR_CITA:
+			insertarCita();
+			break;
+		case BUSCAR_CITA:
+			buscarCita();
+			break;
+		case BORRAR_CITA:
+			borrarCita();
+			break;
+		case MOSTRAR_CITAS:
+			mostrarCitas();
+			break;
+		case MOSTRAR_CITAS_DIA:
+			mostrarCitasDia();
+			break;
+		}
+	}
 
 	private static void insertarCita() {
 		Cita cita;
