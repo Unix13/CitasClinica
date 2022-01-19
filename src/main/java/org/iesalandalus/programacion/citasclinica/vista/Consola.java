@@ -31,4 +31,42 @@ public class Consola {
 		System.out.println("");
 	}
 
+	public static Opciones elegirOpcion() {
+		int opcionMenu;
+		Opciones opcion = null;
+		do {
+			System.out.println("Introduce la opción a realizar (0-5) para volver a visualizar el menú pulse 6");
+			System.out.print("Opción: ");
+			opcionMenu = org.iesalandalus.programacion.utilidades.Entrada.entero();
+			if (opcionMenu == 6) {
+				mostrarMenu();
+			}
+		} while (opcionMenu < 0 || opcionMenu > 5);
+		// no se indica opcionMenu>6 porque saldria del bucle do-while en el caso de
+		// volver a mostrar el menu de opciones, no se habría selecionado ninguna opcion
+		// válida en el switch a continuación
+		switch (opcionMenu) {
+		case 0:
+			opcion = Opciones.SALIR;
+			break;
+		case 1:
+			opcion = Opciones.INSERTAR_CITA;
+			break;
+		case 2:
+			opcion = Opciones.BUSCAR_CITA;
+			break;
+		case 3:
+			opcion = Opciones.BORRAR_CITA;
+			break;
+		case 4:
+			opcion = Opciones.MOSTRAR_CITAS;
+			break;
+		case 5:
+			opcion = Opciones.MOSTRAR_CITAS_DIA;
+			break;
+		}
+		return opcion;
+	}
+	
+
 }
