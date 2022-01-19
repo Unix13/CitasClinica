@@ -23,23 +23,7 @@ public class Citas {
 		return coleccionCitas;
 	}
 
-	public Cita[] getCitas(LocalDate fecha) {
-		if (fecha == null) {
-			throw new NullPointerException("ERROR: No se pueden devolver las citas para un día nulo.");
-		}
-		Cita[] coleccionCitasFecha = new Cita[tamano];
-
-		int i, j = 0;
-		for (i = 0; i < tamano; i++) {
-			if (coleccionCitas[i].getFechaHora().toLocalDate().equals(fecha)) {
-
-				coleccionCitasFecha[j] = new Cita(coleccionCitas[i]);
-				j++;
-			}
-		}
-		return coleccionCitasFecha;
-	}
-
+	
 	private boolean tamanoSuperado(int nuevoTamano) {
 		boolean superado = false;
 		if (nuevoTamano >= tamano) {
@@ -124,5 +108,30 @@ public class Citas {
 		} else {
 			throw new OperationNotSupportedException("ERROR: No existe ninguna cita para esa fecha y hora.");
 		}
+	}
+	public Cita[] getCitas(LocalDate fecha) {
+		if (fecha == null) {
+			throw new NullPointerException("ERROR: No se pueden devolver las citas para un día nulo.");
+		}
+		Cita[] coleccionCitasFecha = new Cita[tamano];
+
+		int i, j = 0;
+		for (i = 0; i < tamano; i++) {
+			if (coleccionCitas[i].getFechaHora().toLocalDate().equals(fecha)) {
+
+				coleccionCitasFecha[j] = new Cita(coleccionCitas[i]);
+				j++;
+			}
+		}
+		return coleccionCitasFecha;
+	}
+	public Citas(int capacidad){
+		if(capacidad<=0) {
+			throw new IllegalArgumentException("ERROR: La capacidad debe ser mayor que cero.");
+		}
+		coleccionCitas = new Cita[capacidad];
+		this.capacidad=capacidad;
+		this.tamano=0;
+		
 	}
 }
