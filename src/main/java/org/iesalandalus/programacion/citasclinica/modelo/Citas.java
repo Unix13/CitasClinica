@@ -57,9 +57,10 @@ public class Citas {
 			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
 		}
 
-		if (buscar(cita) != null) {
+		if (buscar(cita) !=null) {
 			throw new OperationNotSupportedException("ERROR: Ya existe una cita para esa fecha y hora.");
 		}
+		
 
 		if (capacidadSuperada(tamano) == true) {
 			throw new OperationNotSupportedException("ERROR: No se aceptan más citas.");
@@ -67,6 +68,7 @@ public class Citas {
 			coleccionCitas[tamano] = new Cita(cita);
 			System.out.println("Cita introducida correctamente.");
 			tamano++;
+			
 		}
 	}
 

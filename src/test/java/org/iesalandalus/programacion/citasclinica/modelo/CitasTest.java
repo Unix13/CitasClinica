@@ -23,7 +23,7 @@ public class CitasTest {
 	private static final String ERROR_NO_MAS_CITAS = "ERROR: No se aceptan más citas.";
 	private static final String ERROR_CITA_EXISTE = "ERROR: Ya existe una cita para esa fecha y hora.";
 	private static final String ERROR_CITA_BORRAR_NO_EXISTE = "ERROR: No existe ninguna cita para esa fecha y hora.";
-	private static final String ERROR_DIA_NULO = "ERROR: No se pueden devolver las citas para un día nulo.";
+	private static final String ERROR_DIA_NULO = "ERROR: No se pueden devolver las citas para un d�a nulo.";
 	private static final String OPERACION_NO_PERMITIDA = "Debería haber saltado una excepción indicando que dicha operación no está permitida.";
 	private static final String CITA_NULA = "Debería haber saltado una excepción indicando que no se puede operar con una cita nula.";
 	private static final String MENSAJE_NO_CORRECTO = "El mensaje devuelto por la excepción no es correcto.";
