@@ -23,7 +23,6 @@ public class Citas {
 		return coleccionCitas;
 	}
 
-	
 	private boolean tamanoSuperado(int nuevoTamano) {
 		boolean superado = false;
 		if (nuevoTamano >= tamano) {
@@ -57,10 +56,9 @@ public class Citas {
 			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
 		}
 
-		if (buscar(cita) !=null) {
+		if (buscar(cita) != null) {
 			throw new OperationNotSupportedException("ERROR: Ya existe una cita para esa fecha y hora.");
 		}
-		
 
 		if (capacidadSuperada(tamano) == true) {
 			throw new OperationNotSupportedException("ERROR: No se aceptan más citas.");
@@ -68,7 +66,7 @@ public class Citas {
 			coleccionCitas[tamano] = new Cita(cita);
 			System.out.println("Cita introducida correctamente.");
 			tamano++;
-			
+
 		}
 	}
 
@@ -111,6 +109,7 @@ public class Citas {
 			throw new OperationNotSupportedException("ERROR: No existe ninguna cita para esa fecha y hora.");
 		}
 	}
+
 	public Cita[] getCitas(LocalDate fecha) {
 		if (fecha == null) {
 			throw new NullPointerException("ERROR: No se pueden devolver las citas para un día nulo.");
@@ -127,13 +126,14 @@ public class Citas {
 		}
 		return coleccionCitasFecha;
 	}
-	public Citas(int capacidad){
-		if(capacidad<=0) {
+
+	public Citas(int capacidad) {
+		if (capacidad <= 0) {
 			throw new IllegalArgumentException("ERROR: La capacidad debe ser mayor que cero.");
 		}
 		coleccionCitas = new Cita[capacidad];
-		this.capacidad=capacidad;
-		this.tamano=0;
-		
+		this.capacidad = capacidad;
+		this.tamano = 0;
+
 	}
 }
